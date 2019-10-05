@@ -33,34 +33,34 @@ elif [ $1 == "help" ];then
     help
     
 elif [ $1 == "install" ];then
-    sudo git clone -b manyuser https://github.com/shadowsocksr-backup/shadowsocksr.git $install_path
-    # sudo git clone -b rm https://github.com/the0demiurge/not-in-use.git $install_path
+    git clone -b manyuser https://github.com/shadowsocksr-backup/shadowsocksr.git $install_path
+    # git clone -b rm https://github.com/the0demiurge/not-in-use.git $install_path
     
 elif [ $1 == "uninstall" ];then
     echo "Danger! are you to remove $install_path forever?(y/N)"
     read doit
     if [ $doit == 'y' ];then
-        sudo rm -rvf $install_path
+        rm -rvf $install_path
     fi
     
 elif [ $1 == "config" ];then
-    sudo $EDITOR $install_path/config.json
+    $EDITOR $install_path/config.json
     cd $install_path/shadowsocks/
-    sudo python local.py -d stop
-    sudo python local.py -d start
+    python local.py -d stop
+    python local.py -d start
     
 elif [ $1 == "start" ];then
     cd $install_path/shadowsocks/
-    sudo python local.py -d start
+    python local.py -d start
     
 elif [ $1 == "stop" ];then
     cd $install_path/shadowsocks/
-    sudo python local.py -d stop
+    python local.py -d stop
     
 elif [ $1 == "log" ];then
     tail -f /var/log/shadowsocks.log
     
 elif [ $1 == "shell" ];then
     cd $install_path/shadowsocks/
-    sudo python local.py $@
+    python local.py $@
 fi
