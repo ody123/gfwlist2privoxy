@@ -46,16 +46,16 @@ elif [ $1 == "uninstall" ];then
 elif [ $1 == "config" ];then
     $EDITOR $install_path/config.json
     cd $install_path/shadowsocks/
-    python local.py -d stop
-    python local.py -d start
+    python local.py stop
+    python local.py start
     
 elif [ $1 == "start" ];then
     cd $install_path/shadowsocks/
-    python local.py -d start
+    python local.py start
     
 elif [ $1 == "stop" ];then
     cd $install_path/shadowsocks/
-    python local.py -d stop
+    python local.py stop
     
 elif [ $1 == "log" ];then
     tail -f /var/log/shadowsocks.log
